@@ -88,7 +88,18 @@ git fetch upstream
 git merge upstream/master
 git push</pre>
         <p>Provide your GitHub's credentials and the updates will be pushed to your GitHub's repository.</p>
+        <p><strong>Note:</strong> you could get this error the first time you try to push:</p>
+            <pre>warning: push.default is unset; its implicit value is changing in
+Git 2.0 from 'matching' to 'simple'. To squelch this message
+and maintain the current behavior after the default changes, use:
 
+  git config --global push.default matching
+
+To squelch this message and adopt the new behavior now, use:
+
+  git config --global push.default simple</pre>
+        <p>To fix it and adopt the new default behavior, simply run the last command from the command prompt (<a href="http://stackoverflow.com/questions/13148066/warning-push-default-is-unset-its-implicit-value-is-changing-in-git-2-0">more details here</a>).</p>
+        <pre>git config --global push.default simple</pre>
 		<h2>Create a pull request to update your locale</h2>
 		<p>As a first step you need to create a branch in your repository, so you have to choose a name. For example let's call this branch <kbd>jul29_it</kbd></p>
 		<pre>
@@ -126,7 +137,7 @@ git push</pre>
         </ul>
 
         <p>Note: this doc is available on <a href="https://github.com/flodolo/docs/tree/master/github_l10n">GitHub</a>. If you want to improve it, you should know how do it now ;-) </p>
-		<p id="update">Last updated: 2014-05-09</p>
+		<p id="update">Last updated: 2014-05-27</p>
 	</div>
 </body>
 </html>

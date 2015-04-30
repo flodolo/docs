@@ -2,7 +2,7 @@
 <html lang="en-US">
 <head>
   <meta charset=utf-8>
-  <title>Basic GitHub for localizers</title>
+  <title>Basic GitHub for Localizers</title>
   <style type="text/css">
     body {
     	background-color: #f9f9f9;
@@ -53,41 +53,41 @@
 		<h1>Basic Git for localizers</h1>
 
 		<h2>Fork a repository</h2>
-		<p>If you don't have an account on GitHub, register one for free on <a href="https://github.com">github.com</a> and <a href="https://help.github.com/articles/set-up-git#platform-all">install git</a> on your system.</p>
-		<p>Once you login, go to the repository you're interested in and create a "fork".
-		Let's say you want to create a fork of <kbd>webpay</kbd>: go to <a href="https://github.com/mozilla/webpay">github.com/mozilla/webpay</a> and click on the <strong>Fork</strong> button on the top right.<img src="img/git1.png" alt="fork" title="Fork the repository" /></p>
-		<p>This will create a fork (think of it as a copy) of the <kbd>webpay</kbd> repository in your own account.</p>
+		<p>If you don’t have an account on GitHub, register one for free on <a href="https://github.com">github.com</a> and <a href="https://help.github.com/articles/set-up-git#platform-all">install git</a> on your system.</p>
+		<p>Once you login, go to the repository you’re interested in and create a "fork".
+		Let’s say you want to create a fork of <kbd>webpay</kbd>: go to <a href="https://github.com/mozilla/webpay">github.com/mozilla/webpay</a> and click on the <strong>Fork</strong> button in the top right part of the page.<img src="img/git1.png" alt="fork" title="Fork the repository" /></p>
+		<p>This will create a fork – think of it as a copy – of the <kbd>webpay</kbd> repository in your own account. At this point your fork and the original repository share the same history, but will live separate lives from this moment on.</p>
 
 		<h2>Clone your forked repository</h2>
 		<p>Now you have to clone the repository on your computer. Suppose that your username is <kbd>l10nguy</kbd>, you need to clone <a href="https://github.com/l10nguy/webpay">https://github.com/l10nguy/webpay</a> and tell the system that you want to use the original Mozilla repository as a source for updates.</p>
         <p>These are the commands you need to run in your terminal (move into the folder where you want to keep your files before running them):</p>
 		<pre>
-# You're cloning your forked repository, so github.com/YOURUSER/REPOSITORY
+# You’re cloning your forked repository, so github.com/YOURUSER/REPOSITORY
 git clone https://github.com/l10nguy/webpay
 
-# Move in the clone's folder created by the previous command
+# Move in the clone’s folder created by the previous command
 cd webpay
 
-# You're telling Git to use another repository as a source
+# You’re telling Git to use another repository as a source
 # So not YOURUSER but MOZILLA in this case
 git remote add upstream https://github.com/mozilla/webpay</pre>
 
 		<h2>Update your forked repository</h2>
-		<p>Now you have a local copy of your fork inside the folder <kbd>webpay</kbd>. When you want to update your local copy you need to run these commands from inside the repository (i.e. the <kbd>webpay</kbd> folder).</p>
+		<p>Now you have a local copy of your fork inside the folder <kbd>webpay</kbd>. When you want to update your local copy, importing new changes from the original repository, you need to run these commands from inside the repository (i.e. the <kbd>webpay</kbd> folder).</p>
 		<pre>
-# Important: the follow line will delete every local change. It's useful to
-# avoid conflicts and merges, if you know what you're doing you can ignore it
+# Important: the following line will delete every local change. It’s useful to
+# avoid conflicts and merges, if you know what you’re doing you can ignore it
 git stash
 
-# Ensure that you're on the branch called Master
+# Ensure that you’re on the branch called Master
 git checkout master
 
-# Pull changes from Mozilla's repositories, merge to your repository and push
+# Pull changes from Mozilla’s repositories, merge to your repository and push
 # changes to Github
 git fetch upstream
 git merge upstream/master
 git push</pre>
-        <p>Provide your GitHub's credentials and the updates will be pushed to your GitHub's repository.</p>
+        <p>Provide your GitHub’s credentials and the updates will be pushed to your GitHub’s repository.</p>
         <p><strong>Note:</strong> you could get this error the first time you try to push:</p>
             <pre>warning: push.default is unset; its implicit value is changing in
 Git 2.0 from 'matching' to 'simple'. To squelch this message
@@ -101,17 +101,17 @@ To squelch this message and adopt the new behavior now, use:
         <p>To fix it and adopt the new default behavior, simply run the last command from the command prompt (<a href="http://stackoverflow.com/questions/13148066/warning-push-default-is-unset-its-implicit-value-is-changing-in-git-2-0">more details here</a>).</p>
         <pre>git config --global push.default simple</pre>
 		<h2>Create a pull request to update your locale</h2>
-		<p>As a first step you need to create a branch in your repository, so you have to choose a name. For example let's call this branch <kbd>jul29_it</kbd></p>
+		<p>As a first step you need to create a branch in your repository, so you have to choose a name. For example let’s call this branch <kbd>jul29_it</kbd></p>
 		<pre>
 # Create the branch
 git branch jul29_it
 
-# Ensure that you're on the branch just created
+# Ensure that you’re on the branch just created
 git checkout jul29_it
 
 # Push the new branch to your repository on GitHub
 git push origin jul29_it</pre>
-		<p>At this point your local files are on the branch called <kbd>jul29_it</kbd> (you can always check the current branch or the files modified by running <kbd>git status</kbd>). Update the .po files and when you're ready commit your changes using these commands. In this case I'm updating Italian and the file is <kbd>locale/it/LC_MESSAGES/messages.po</kbd> (don't commit .mo files, they're compiled from .po and not necessary).</p>
+		<p>At this point your local files are on the branch called <kbd>jul29_it</kbd> (you can always check the current branch or the files modified by running <kbd>git status</kbd>). Update the .po files and when you’re ready commit your changes using these commands. In this case I’m updating Italian and the file is <kbd>locale/it/LC_MESSAGES/messages.po</kbd> (don’t commit .mo files, they’re compiled from .po and not necessary).</p>
 		<pre>
 # Add the updated file to the commit
 git add locale/it/LC_MESSAGES/messages.po
@@ -120,24 +120,24 @@ git add locale/it/LC_MESSAGES/messages.po
 git commit -m "Updated Italian localization"
 
 # Push changes to GitHub
-git push</pre>
+git push origin jul29_it</pre>
 		<p>Now you can go to your forked repository on GitHub and you will see something like this.</p>
         <img src="img/git2.png" alt="pr" title="Create pull request" />
-		<p>Click on the button <strong>Compare &amp; pull request</strong>, check the pull request (you can see the diff on the bottom of the page) and if everything looks good click on the green button <strong>Send pull request</strong> to complete the procedure.
+		<p>Click on the button <strong>Compare &amp; pull request</strong>, check the pull request (you can see the diff at the bottom of the page) and if everything looks good click on the green button <strong>Send pull request</strong> to complete the procedure.
         <img src="img/git3.png" alt="pr" title="Create pull request" />
-        You'll receive an email when the pull request is merged into the project, or if there's a problem with the pull request and someone added a comment. If necessary, you can modify or close your pull request from the <a href="https://github.com/mozilla/webpay/pulls">project's pull requests list</a> (select your pull request, the <kbd>Close</kbd> button is at the end of the screen).
+        You’ll receive an email when the pull request is merged into the project, or if there’s a problem with the pull request and someone added a comment. If necessary, you can modify or close your pull request from the <a href="https://github.com/mozilla/webpay/pulls">project’s pull requests list</a> (select your pull request, the <kbd>Close</kbd> button is at the end of the screen).
         <img src="img/git4.png" alt="pr" title="Create pull request" />
         </p>
 
 		<h2>Final suggestions</h2>
 		<ul>
-            <li>If something goes wrong, you can always delete your forked repository and start from scratch, or return to the branch Master (see Update section) and create a new clean branch to start from. As a personal suggestion, don't ever commit to Master, just create new branches for your own changes.</li>
+            <li>If something goes wrong, you can always delete your forked repository and start from scratch, or return to the branch Master (see Update section) and create a new clean branch to start from. As a personal suggestion, don’t ever commit to Master, just create new branches for your own changes.</li>
             <li>Always update your forked repository before creating new branches.</li>
-            <li>If you create a pull request from the branch jul29_it and push other commits to the same branch, the pull request will be automatically updated. In other words: if you don't want to change your original pull request, don't push to that branch until the pull request is approved and merged.</li>
+            <li>If you create a pull request from the branch jul29_it and push other commits to the same branch, the pull request will be automatically updated. In other words: if you don’t want to change your original pull request, don’t push to that branch until the pull request is approved and merged.</li>
         </ul>
 
         <p>Note: this doc is available on <a href="https://github.com/flodolo/docs/tree/master/github_l10n">GitHub</a>. If you want to improve it, you should know how do it now ;-) </p>
-		<p id="update">Last updated: 2014-05-27</p>
+		<p id="update">Last updated: 2015-04-30</p>
 	</div>
 </body>
 </html>
